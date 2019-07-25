@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd"
+       default-autowire="byName">
+
+    <context:component-scan base-package="com"/>
+    <bean id="pmonitor" class="com.wxd.aopTest.adviceTest.ControllablePerformanceMonitor"/>
+    <bean id = "forumServiceTarget" class="com.wxd.aopTest.service.ForumServiceImpl"/>
+    <bean id = "forumService" class="org.springframework.aop.framework.ProxyFactoryBean"
+      p:interfaces="com.wxd.aopTest.adviceTest.Monitable"
+      p:target-ref="forumServiceTarget"
+          p:interceptorNames="pmonitor"
+          p:proxyTargetClass="true"
+    />
+
+<!--    <bean id="waiterTarget" class="com.wxd.aopTest.adviceTest.Waiter"/>
+    <bean id="sellerTarget" class="com.wxd.aopTest.adviceTest.Seller"/>
+    &lt;!&ndash;增强逻辑&ndash;&gt;
+    <bean id ="greetingAdvice" class="com.wxd.aopTest.adviceTest.GreetBeforeAdvice"/>
+    &lt;!&ndash;切面中配置增强&ndash;&gt;
+    <bean id = "greetingAdvisor" class="com.wxd.aopTest.adviceTest.advisor.GreetingAdvice" p:advice-ref="greetingAdvice"/>
+    &lt;!&ndash;共同逻辑写在父Bean中&ndash;&gt;
+    <bean abstract="true" id = "parent" class="org.springframework.aop.framework.ProxyFactoryBean"
+    p:interceptorNames="greetingAdvisor"
+    p:proxyTargetClass="true"/>
+
+    <bean name="waiter" parent="parent"  p:target-ref="waiterTarget"/>
+    <bean name="seller" parent="parent"  p:target-ref="sellerTarget"/>-->
+
+
+    <bean id="waiter" class="com.wxd.aopTest.adviceTest.Waiter"/>
+    <bean id="seller" class="com.wxd.aopTest.adviceTest.Seller"/>
+
+    <bean class="com.wxd.aopTest.aspectJTest.MyAspectjAdvisor"/>
+    <aop:aspectj-autoproxy proxy-target-class="true"/>
+
+ <!--   <bean id ="greetingAdvice" class="com.wxd.aopTest.adviceTest.GreetBeforeAdvice"/>
+    <bean id = "regexAdvisor" class="org.springframework.aop.support.RegexpMethodPointcutAdvisor"
+          p:advice-ref="greetingAdvice" >
+            <property name="patterns">
+                <list>
+                    <value>.*To.*</value>
+                </list>
+            </property>
+
+    </bean>-->
+
+  <!--  <bean class="org.springframework.aop.framework.autoproxy.DefaultAdvisorAutoProxyCreator" p:proxyTargetClass="true"/>-->
+
+   <!-- <bean abstract="true" id = "parent1" class="org.springframework.aop.framework.ProxyFactoryBean"
+          p:interceptorNames="regexAdvisor"
+          p:proxyTargetClass="true"/>-->
+
+    <!--<bean name="waiter1" parent="parent1"  p:target-ref="waiterTarget"/>
+    <bean name="seller1" parent="parent1"  p:target-ref="sellerTarget"/>-->
+
+</beans>

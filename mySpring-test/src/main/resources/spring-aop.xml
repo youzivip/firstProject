@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd"
+       default-autowire="byName">
+
+   <bean id="car" class="com.ioc.domain.Car"/>
+   <bean id="car1" class="com.ioc.domain.Car">
+      <constructor-arg index="0" value="Benz"/>
+      <constructor-arg index="1" value="Benz"/>
+      <constructor-arg index="2" value="3" />
+   </bean>
+
+
+   <bean id="pmonitor" class="com.aopTest.advice.ControllePerformanceMonitor"/>
+   <bean id="forumServiceTarget" class="com.domin.Waiter"/>
+   <bean id="service" class="org.springframework.aop.framework.ProxyFactoryBean">
+      <property name="interfaces" value="com.domin.Monitor"/>
+      <property name="target" ref="forumServiceTarget"/>
+      <property name="interceptorNames" value="pmonitor"/>
+      <property name="proxyTargetClass" value="true"/>
+   </bean>
+
+
+
+
+</beans>

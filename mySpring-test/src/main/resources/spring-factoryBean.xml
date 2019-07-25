@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context" xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd"
+       default-autowire="byName">
+
+  <aop:aspectj-autoproxy/>
+   <!--<aop:config>-->
+      <!--<aop:aspect ref="preGreetingAspect">-->
+         <!--<aop:before method="before"   pointcut="target(com.domin.Waiter)" />-->
+      <!--</aop:aspect>-->
+   <!--</aop:config>-->
+
+    <aop:config>
+        <aop:advisor advice-ref="BeforeAdvice1" pointcut="target(com.domin.Waiter)"/>
+    </aop:config>
+
+   <bean id="preGreetingAspect" class="com.aopTest.aspectJTest.PreGreetingAspect"/>
+   <bean id="BeforeAdvice1" class="com.aopTest.advice.BeforeAdvice1"/>
+    <bean id="waiter" class="com.domin.Waiter"/>
+
+
+</beans>

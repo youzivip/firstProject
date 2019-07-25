@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- spring 的默认处理类-->
+    <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+        <!-- 必须添加下面这句声明 -->
+        <property name="ignoreUnresolvablePlaceholders" value="true" />
+        <property name="location">
+            <value>classpath:jsf_alias.properties</value>
+        </property>
+    </bean>
+
+
+    <!-- Enables the Spring MVC @Controller programming model -->
+    <mvc:annotation-driven/>
+
+    <context:component-scan base-package="com.jd.sep.shop.controller"/>
+
+    <!-- 静态资源配置 -->
+    <mvc:default-servlet-handler/>
+
+    <!--字符串处理转换-->
+    <bean id="requestMappingHandlerAdapter"
+          class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter">
+        <property name="messageConverters">
+            <list>
+                <bean class="org.springframework.http.converter.StringHttpMessageConverter">
+                    <property name="supportedMediaTypes">
+                        <list>
+                            <value>text/plain;charset=UTF-8</value>
+                        </list>
+                    </property>
+                </bean>
+            </list>
+        </property>
+    </bean>
+
+    <bean id="contentNegotiationManager" class="org.springframework.web.accept.ContentNegotiationManagerFactoryBean">
+        <property name="defaultContentType" value="text/html"/>
+        <!-- not by accept header -->
+        <property name="ignoreAcceptHeader" value="true"/>
+        <!-- by extension -->
+        <property name="mediaTypes">
+            <map>
+                <entry key="xml" value="application/xml"/>
+                <entry key="json" value="application/json"/>
+            </map>
+        </property>
+    </bean>
+
+    <!-- 模板解析器  -->
+    <!-- 使用thymeleaf解析 -->
+    <bean id="templateResolver"
+          class="org.thymeleaf.spring4.templateresolver.SpringResourceTemplateResolver">
+        <property name="prefix" value="/WEB-INF/templates/"/>
+        <property name="suffix" value=".html"/>
+        <property name="templateMode" value="HTML5"/>
+        <property name="cacheable" value="false"/>
+        <property name="characterEncoding" value="UTF-8"/>
+    </bean>
+
+    <bean id="templateEngine" class="org.thymeleaf.spring4.SpringTemplateEngine">
+        <property name="templateResolver" ref="templateResolver"/>
+    </bean>
+
+    <bean class="org.thymeleaf.spring4.view.ThymeleafViewResolver">
+        <property name="templateEngine" ref="templateEngine"/>
+        <property name="characterEncoding" value="UTF-8"/>
+    </bean>
+
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <mvc:exclude-mapping path="/error-user"/>
+            <mvc:exclude-mapping path="/static/**"/>
+            <ref bean="springUnionPassportInterceptor"/>
+        </mvc:interceptor>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <mvc:exclude-mapping path="/error-user"/>
+            <mvc:exclude-mapping path="/static/**"/>
+            <!--自定义B账号判断拦截器-->
+            <bean class="com.jd.sep.shop.interceptor.AccountTypeInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+</beans>

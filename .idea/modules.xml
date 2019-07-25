@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/base-test/base-test.iml" filepath="$PROJECT_DIR$/base-test/base-test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/disruptorTest/disruptorTest.iml" filepath="$PROJECT_DIR$/disruptorTest/disruptorTest.iml" />
+      <module fileurl="file://$PROJECT_DIR$/jdk8Test/jdk8Test.iml" filepath="$PROJECT_DIR$/jdk8Test/jdk8Test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/mySpring-test/mySpring-test.iml" filepath="$PROJECT_DIR$/mySpring-test/mySpring-test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/netty-test/netty-test.iml" filepath="$PROJECT_DIR$/netty-test/netty-test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/reflect-test/reflect-test.iml" filepath="$PROJECT_DIR$/reflect-test/reflect-test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/socket-test/socket-test.iml" filepath="$PROJECT_DIR$/socket-test/socket-test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/spring-boot-test/spring-boot-test.iml" filepath="$PROJECT_DIR$/spring-boot-test/spring-boot-test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/thread-test/thread-test.iml" filepath="$PROJECT_DIR$/thread-test/thread-test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wxd-test.iml" filepath="$PROJECT_DIR$/wxd-test.iml" />
+    </modules>
+  </component>
+</project>
