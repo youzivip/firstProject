@@ -1,4 +1,4 @@
-package webSocketTest;
+package nettyTest1.webSocketTest;
 
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelInitializer;

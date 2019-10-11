@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="CompilerConfiguration">
-    <option name="DEFAULT_COMPILER" value="Javac" />
-    <resourceExtensions />
     <wildcardResourcePatterns>
       <entry name="!?*.java" />
       <entry name="!?*.form" />
@@ -14,36 +12,46 @@
       <entry name="!?*.clj" />
     </wildcardResourcePatterns>
     <annotationProcessing>
-      <profile default="true" name="Default" enabled="false">
-        <processorPath useClasspath="true" />
-      </profile>
-      <profile default="false" name="Maven default annotation processors profile" enabled="true">
+      <profile name="Maven default annotation processors profile" enabled="true">
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <processorPath useClasspath="true" />
         <module name="base-test" />
         <module name="disruptorTest" />
+        <module name="es-test" />
         <module name="jdk8Test" />
+        <module name="jvmTest" />
+        <module name="kafka" />
+        <module name="mybatis" />
         <module name="mySpring-test" />
         <module name="netty-test" />
+        <module name="redis-test" />
         <module name="reflect-test" />
         <module name="socket-test" />
         <module name="spring-boot-test" />
+        <module name="swagger_test" />
         <module name="thread-test" />
+        <module name="zk-test" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="base-test" target="1.5" />
-      <module name="disruptorTest" target="1.5" />
+      <module name="base-test" target="1.8" />
+      <module name="disruptorTest" target="1.8" />
+      <module name="es-test" target="1.7" />
       <module name="jdk8Test" target="1.8" />
-      <module name="mySpring-test" target="1.7" />
+      <module name="jvmTest" target="1.8" />
+      <module name="kafka" target="1.7" />
+      <module name="mybatis" target="1.8" />
+      <module name="mySpring-test" target="1.8" />
       <module name="netty-test" target="1.8" />
+      <module name="redis-test" target="1.7" />
       <module name="reflect-test" target="1.8" />
       <module name="socket-test" target="1.8" />
-      <module name="spring-boot-test" target="1.8" />
+      <module name="spring-boot-test" target="1.5" />
+      <module name="swagger_test" target="1.8" />
       <module name="thread-test" target="1.8" />
       <module name="wxd-test" target="1.8" />
+      <module name="zk-test" target="1.8" />
     </bytecodeTargetLevel>
   </component>
 </project>

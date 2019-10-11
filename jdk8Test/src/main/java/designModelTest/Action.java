@@ -1,4 +1,6 @@
-package DesignModelTest;
+package designModelTest;
 
-public class Action {
+@FunctionalInterface
+public interface Action {
+    void action();
 }

@@ -1,14 +1,32 @@
-package com.ioc.javaBase.domain;
+package com.ioc.domain;
+
+import org.springframework.beans.BeansException;
+import org.springframework.beans.factory.BeanFactory;
+import org.springframework.beans.factory.BeanFactoryAware;
+import org.springframework.beans.factory.BeanNameAware;
 
 /**
  * Created by wangxiaodi1 on 2019/3/4.
  */
-public class Car {
+public class Car implements BeanFactoryAware{
+
+    private BeanFactory factory;
+
     private String brand;
     private String color;
     private int maxSpeed;
 
     public Car() {
+    }
+
+    @Override
+    public void setBeanFactory(BeanFactory beanFactory) throws BeansException {
+        System.out.println("set BeanFactory************");
+        this.factory = beanFactory;
+    }
+
+    public BeanFactory getFactory() {
+        return factory;
     }
 
     public Car(String brand, String color, int maxSpeed) {

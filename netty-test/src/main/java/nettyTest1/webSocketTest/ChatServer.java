@@ -1,4 +1,4 @@
-package webSocketTest;
+package nettyTest1.webSocketTest;
 
 import io.netty.bootstrap.ServerBootstrap;
 import io.netty.channel.Channel;
@@ -9,7 +9,6 @@ import io.netty.channel.group.ChannelGroup;
 import io.netty.channel.group.DefaultChannelGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
-import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.util.concurrent.ImmediateEventExecutor;
 
 import java.net.InetSocketAddress;
